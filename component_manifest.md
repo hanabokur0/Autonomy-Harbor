@@ -1,0 +1,321 @@
+manifest_version: "0.9"
+project: personal-agent-runtime
+principle: "knowledge_and_protocol_growth_must_not_imply_authority_growth"
+
+components:
+  - id: meta-observer
+    repo: https://github.com/hanabokur0/Meta-Observer
+    class: optional_core
+    layer: observation
+    responsibility: "Observe functional state, phase behavior, and intervention/non-intervention conditions."
+    produces: [observation_state, intervention_candidate]
+    consumes: [external_signals]
+    may_mutate_authority: false
+    runtime_position: pre_context
+    status: experimental
+
+  - id: lopas-mccp
+    repo: https://github.com/hanabokur0/LoPAS-MCCP
+    class: core_candidate
+    layer: context_admission
+    responsibility: "Measure question density, classify reasoning demand, and activate only the minimum relevant memory/context cluster."
+    produces: [compressed_context, l_tag, doq]
+    consumes: [input, memory_index]
+    may_mutate_authority: false
+    runtime_position: before_reasoning
+    status: implemented_prototype
+    invariants:
+      - "inactive_context_is_absent_not_merely_deprioritized"
+      - "context_visibility_does_not_create_execution_authority"
+
+  - id: lopas-lptm-minimal
+    repo: https://github.com/hanabokur0/lopas-lptm-minimal
+    class: core_candidate
+    layer: phase_sensing
+    responsibility: "Detect motion-aware phase transitions using PST, first/second derivatives, and hysteresis."
+    produces: [pst, delta_pst, delta2_pst, transition_label, lptm_layer]
+    consumes: [indicator_state, previous_pst, previous_layer]
+    may_mutate_authority: false
+    runtime_position: before_deliberation
+    status: implemented_minimal
+    invariants:
+      - "phase_signal_is_advisory_not_authoritative"
+      - "hysteresis_prevents_threshold_chatter"
+
+  - id: lopas-chd-protocol
+    repo: https://github.com/hanabokur0/LoPAS-CHD-Protocol
+    class: core_candidate
+    layer: cognitive_hazard_monitor
+    responsibility: "Detect reasoning drift, silent failure, fragility, and emergent cognitive hazards before deliberation and after execution without becoming a truth oracle or authority source."
+    produces: [structural_risk_map, safe_exploration_path, cognitive_hazard_signal]
+    consumes: [compressed_context, phase_state, reasoning_trace, action_receipt]
+    may_mutate_authority: false
+    runtime_position: pre_deliberation_and_post_execution
+    status: specification_with_integration_contract
+    invariants:
+      - "cognitive_safety_is_not_execution_authority"
+      - "chd_safe_does_not_imply_gate_allow"
+      - "chd_hazard_can_block_or_reroute_but_never_grant"
+      - "chd_is_not_truth_verification"
+      - "post_execution_hazards_return_to_evidence_and_learning_paths"
+
+  - id: lopas-drm
+    repo: https://github.com/hanabokur0/LoPAS-DRM
+    class: core_candidate
+    layer: decision_contract
+    responsibility: "Integrate MCCP context admission, decision dependency mapping, and RNC responsibility stamping into a portable decision contract."
+    produces: [decision_contract, dependency_map, responsibility_map]
+    consumes: [compressed_context, phase_state, cognitive_hazard_signal]
+    may_mutate_authority: false
+    runtime_position: before_deliberation
+    status: specification
+    terminology:
+      upstream_dda: "Decision Dependency Architecture"
+      runtime_alias: "DDM — Decision Dependency Mapper"
+    invariants:
+      - "responsibility_stamp_is_not_capability_grant"
+      - "human_app_tag_is_not_runtime_authorization"
+      - "decision_dependency_metadata_cannot_mutate_authority"
+
+  - id: lopas-dda
+    repo: https://github.com/hanabokur0/LoPAS-DDA
+    class: core_candidate
+    layer: deliberation
+    canonical_name: "Deliberative Decision Architecture"
+    responsibility: "Decide whether judgment should execute, pilot, hold, reframe, reject, or observe more."
+    produces: [decision_card, deliberation_verdict]
+    consumes: [compressed_context, phase_state, observations]
+    may_mutate_authority: false
+    runtime_position: before_protocol_and_action
+    status: experimental
+
+  - id: protocol-foundry
+    repo: https://github.com/hanabokur0/lopas-protocol-foundry
+    class: core
+    layer: protocol_compilation
+    responsibility: "Turn observations into explicit protocol candidates, simulate and grade them, and promote qualified candidates to shadow plans."
+    produces: [protocol_candidate, shadow_plan, foundry_receipt]
+    consumes: [observations, evidence]
+    may_mutate_authority: false
+    runtime_position: upstream
+    status: reference_runtime
+    invariants:
+      - "required_capability_is_not_a_grant"
+      - "simulation_is_not_real_world_proof"
+
+  - id: classification-simulation-pack
+    repo: https://github.com/hanabokur0/classification-simulation-pack
+    class: optional_core
+    layer: operating_simulation
+    responsibility: "Explore AUTO/REVIEW/ESCALATE/HOLD/MANUAL boundaries across declared operating conditions and evidence."
+    produces: [simulation_receipt, operating_boundaries]
+    consumes: [simulation_package, evidence_pack]
+    may_mutate_authority: false
+    runtime_position: pre_promotion
+    status: implemented
+
+  - id: repo-maintainer-agent
+    repo: local
+    class: application_profile
+    layer: maintenance_observation
+    responsibility: "Observe a normalized repository snapshot, deterministically rank maintenance gaps, and emit at most three reviewable maintenance candidates with evidence."
+    produces: [maintenance_candidate, maintenance_receipt, review_action_request]
+    consumes: [repo_snapshot, component_manifest]
+    may_mutate_authority: false
+    runtime_position: application_above_trust_boundary
+    status: v0.5_reference
+    invariants:
+      - "maintenance_score_is_not_authority"
+      - "top_three_are_proposals_not_commands"
+      - "github_issue_create_defaults_to_review"
+      - "github_merge_and_repo_delete_default_to_deny"
+      - "observer_has_no_github_write_credentials"
+
+  - id: review-broker
+    repo: local
+    class: core
+    layer: trusted_review_control_plane
+    responsibility: "Convert an already-routed REVIEW request into one exact, expiring, one-shot human approval lease without creating durable authority."
+    produces: [review_lease, review_event_receipt]
+    consumes: [action_request, review_gate_decision, human_approval]
+    may_mutate_authority: false
+    runtime_position: trusted_control_plane
+    status: v0.9_reference
+    invariants:
+      - "lease_is_bound_to_exact_action_request_digest"
+      - "lease_is_one_shot"
+      - "lease_expires"
+      - "lease_can_be_cancelled"
+      - "lease_is_consumed_before_execution"
+      - "lease_cannot_override_deny"
+      - "lease_does_not_become_durable_allow"
+      - "agent_does_not_hold_issuance_or_cancellation_authority"
+      - "signed_review_lease_cannot_override_deny"
+      - "runtime_does_not_need_review_issuer_private_key"
+      - "signed_lease_replay_state_can_be_durable"
+
+  - id: personal-agent-runtime
+    repo: local
+    class: core
+    layer: trust_and_execution
+    responsibility: "Apply immutable capability policy, execute only authorized actions, and emit receipts."
+    produces: [action_receipt]
+    consumes: [action_request, capability_registry]
+    may_mutate_authority: false
+    runtime_position: trust_boundary
+    status: v0.9_reference
+    invariants:
+      - "default_deny"
+      - "deny_overrides_review_overrides_allow"
+      - "agent_cannot_mutate_control_plane"
+      - "review_never_falls_through_to_execution"
+      - "only_a_valid_redeemed_review_lease_can_release_review_for_one_attempt"
+      - "signed_registry_mode_requires_trusted_capability_authority"
+      - "signed_receipts_do_not_expand_authority"
+
+  - id: appliance-profile
+    repo: local
+    class: deployment_profile
+    layer: process_isolation
+    responsibility: "Separate planner, review signer, gate, executor, and verifier into distinct OS processes with role-scoped keys, Unix-domain socket contracts, and signed one-shot execution permits."
+    produces: [execution_permit, signed_execution_result, signed_action_receipt]
+    consumes: [action_request, signed_review_lease, capability_registry]
+    may_mutate_authority: false
+    runtime_position: trust_boundary_deployment
+    status: v0.9_reference
+    invariants:
+      - "planner_has_no_private_signing_key"
+      - "executor_requires_signed_gate_permit"
+      - "execution_permit_is_exact_request_bound"
+      - "execution_permit_is_short_lived_and_one_shot"
+      - "permit_replay_survives_executor_restart"
+      - "gate_does_not_execute"
+      - "executor_cannot_mutate_registry"
+      - "review_signer_does_not_execute"
+      - "verifier_does_not_execute"
+      - "root_or_administrator_compromise_is_outside_this_reference_boundary"
+
+  - id: verifiable-capability-exchange
+    repo: https://github.com/hanabokur0/Verifiable-Capability-Exchange
+    class: core_candidate
+    layer: verifiable_capability_evidence
+    responsibility: "Provide normalized capability semantics, signed receipts, provenance, and tamper-evident evidence patterns."
+    produces: [capability_claim, signed_receipt, verification_result]
+    consumes: [provider_claim, workload_request]
+    may_mutate_authority: false
+    runtime_position: cross_cutting
+    status: v0.9_profile_integrated
+
+  - id: mvpl
+    repo: https://github.com/hanabokur0/MVPL-Minimal-Verification-Protocol-Layer
+    class: optional
+    layer: verification
+    responsibility: "Verify transformed minimal fields while keeping raw personal data outside the verification engine."
+    produces: [verification_route]
+    consumes: [transformed_verification_tokens]
+    may_mutate_authority: false
+    runtime_position: pre_gate_or_adapter_specific
+    status: prototype
+
+  - id: dynamic-schema-defense
+    repo: https://github.com/hanabokur0/Dynamic-Schema-Defense
+    class: experimental
+    layer: adaptive_defense
+    responsibility: "Vary outer verification structure and challenge framing as defense-in-depth."
+    produces: [session_verification_frame, defense_signal]
+    consumes: [live_anchors, drift_inputs]
+    may_mutate_authority: false
+    runtime_position: cross_cutting
+    status: experimental
+    invariants:
+      - "not_root_of_trust"
+      - "does_not_replace_capability_or_identity_controls"
+
+  - id: information-compost
+    repo: https://github.com/hanabokur0/information-compost
+    class: optional_core
+    layer: reflective_memory
+    responsibility: "Preserve traces and receipts, delay interpretation, and surface reusable meaning without premature identity or goal fixation."
+    produces: [normalized_receipt, reflection_candidate, evidence_pack]
+    consumes: [traces, action_receipts]
+    may_mutate_authority: false
+    runtime_position: post_execution
+    status: implemented_minimal
+
+  - id: lopas-lca
+    repo: https://github.com/hanabokur0/LoPAS-LCA
+    class: core_candidate
+    layer: learning_claim_gate
+    responsibility: "Separate learning classification from structural validation and prevent unvalidated learning claims from becoming durable protocol changes."
+    produces: [learning_claim, learning_validation, protocol_update_candidate]
+    consumes: [normalized_receipt, evidence_pack, post_execution_hazard_signal]
+    may_mutate_authority: false
+    runtime_position: post_reflection_pre_learning
+    status: specification
+    invariants:
+      - "learning_classification_is_not_learning_validation"
+      - "validation_failure_is_not_automatically_absence_of_learning"
+      - "only_validated_learning_may_enter_durable_learning_promotion"
+      - "validated_learning_never_creates_authority"
+
+  - id: protocol-memory
+    repo: https://github.com/hanabokur0/ProtocolMemory-v0.2
+    class: optional_core
+    layer: slow_learning
+    responsibility: "Constrain drift with delayed, bounded, minimal structural adjustments."
+    produces: [bounded_adjustment_candidate]
+    consumes: [repeated_receipts, decision_patterns]
+    may_mutate_authority: false
+    runtime_position: feedback_loop
+    status: prototype
+    invariants:
+      - "learn_slowly"
+      - "one_adjustment_at_a_time"
+      - "permission_and_authority_are_never_learning_targets"
+
+  - id: prsp
+    repo: https://github.com/hanabokur0/production-readiness-simulation-pack
+    class: core_promotion_gate
+    layer: production_readiness
+    responsibility: "Convert production risks into explicit scenarios, required evidence, and PASS/REVIEW/HOLD/REJECT promotion results."
+    produces: [simulation_receipt, promotion_verdict]
+    consumes: [app_manifest, evidence]
+    may_mutate_authority: false
+    runtime_position: promotion_boundary
+    status: integrated_v0_8_promotion_gate
+    invariants:
+      - "prsp_pass_is_not_a_capability_grant"
+      - "promotion_evidence_is_bound_to_exact_registry_delta"
+      - "declared_overall_gate_is_independently_recomputed"
+      - "missing_required_domains_produce_hold"
+      - "promotion_gate_never_mutates_capability_registry"
+      - "promotion_evidence_signer_is_separate_from_capability_authority"
+
+classification_rules:
+  core:
+    meaning: "Required to preserve the runtime's defining safety invariant."
+  core_candidate:
+    meaning: "Expected to become part of the normal cognitive path, but must remain replaceable and cannot own authority."
+  optional_core:
+    meaning: "Strongly useful in a complete system but not required for the minimal execution boundary."
+  optional:
+    meaning: "Domain or deployment dependent integration."
+  experimental:
+    meaning: "Research/defense concept; must not become a root of trust without separate validation."
+  core_promotion_gate:
+    meaning: "Required before claiming production promotion, but not part of every action execution."
+  application_profile:
+    meaning: "A bounded task profile built on top of the runtime; it may propose actions but does not own authority."
+  deployment_profile:
+    meaning: "A host-level process and key separation profile that enforces runtime responsibilities without creating new authority."
+
+forbidden_learning_targets:
+  - capability_grants
+  - credential_scope
+  - root_identity
+  - deny_rules
+  - control_plane_write_access
+  - audit_deletion_policy
+  - trusted_signer_keys
+  - trust_store_membership
+  - signature_role_assignment
