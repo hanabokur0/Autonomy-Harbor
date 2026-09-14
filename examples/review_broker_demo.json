@@ -1,0 +1,87 @@
+{
+  "lease": {
+    "lease_id": "review-demo-lease",
+    "request_digest": "d8c3846f163ad1e85bd36cb99dfd0c6c5a8374e22039574ec2f0385076462bac",
+    "expires_at": "2026-09-14T16:00:25.716492+00:00",
+    "max_uses": 1
+  },
+  "approved_attempt": {
+    "receipt_version": "0.1",
+    "request_id": "review-demo-001",
+    "capability": "filesystem.write",
+    "action": "write_text",
+    "resource": "approved/note.txt",
+    "gate": "ALLOW",
+    "gate_reason": "human_review_lease_redeemed",
+    "matched_grant_ids": [
+      "review-write",
+      "review-lease:review-demo-lease"
+    ],
+    "outcome": "SUCCEEDED",
+    "result": {
+      "bytes_written": 29
+    },
+    "registry_id": "review-demo",
+    "registry_version": "0.6",
+    "created_at": "2026-09-14T15:55:25.717199+00:00",
+    "previous_receipt_hash": null,
+    "receipt_hash": "1083050304ce53f89a481ca7bef0ab334925184eb7802ec94b0781e3ff8d91ca"
+  },
+  "replay_attempt": {
+    "receipt_version": "0.1",
+    "request_id": "review-demo-001",
+    "capability": "filesystem.write",
+    "action": "write_text",
+    "resource": "approved/note.txt",
+    "gate": "REVIEW",
+    "gate_reason": "review_lease_rejected:lease_already_used",
+    "matched_grant_ids": [
+      "review-write"
+    ],
+    "outcome": "NOT_EXECUTED",
+    "result": {},
+    "registry_id": "review-demo",
+    "registry_version": "0.6",
+    "created_at": "2026-09-14T15:55:25.717292+00:00",
+    "previous_receipt_hash": "1083050304ce53f89a481ca7bef0ab334925184eb7802ec94b0781e3ff8d91ca",
+    "receipt_hash": "0eb63caea98e45e861d9651ecf5e4203e0ac6e6b8de21a35b8c300f6d13007b2"
+  },
+  "review_events": [
+    {
+      "event_version": "0.6",
+      "event": "ISSUED",
+      "lease_id": "review-demo-lease",
+      "request_id": null,
+      "request_digest": "d8c3846f163ad1e85bd36cb99dfd0c6c5a8374e22039574ec2f0385076462bac",
+      "reason": "human_review_lease_registered",
+      "actor": "human:cli-demo",
+      "created_at": "2026-09-14T15:55:25.716492+00:00",
+      "previous_event_hash": null,
+      "event_hash": "c2095d28feefce42188ae5ac87983fc444583170b397b2cf117c0d7abdfa4d61"
+    },
+    {
+      "event_version": "0.6",
+      "event": "REDEEMED",
+      "lease_id": "review-demo-lease",
+      "request_id": "review-demo-001",
+      "request_digest": "d8c3846f163ad1e85bd36cb99dfd0c6c5a8374e22039574ec2f0385076462bac",
+      "reason": "one_shot_review_lease_redeemed",
+      "actor": "human:cli-demo",
+      "created_at": "2026-09-14T15:55:25.716492+00:00",
+      "previous_event_hash": "c2095d28feefce42188ae5ac87983fc444583170b397b2cf117c0d7abdfa4d61",
+      "event_hash": "cb721875d02be0fad3948483d5a528b063977d7edd01493159508951a077c584"
+    },
+    {
+      "event_version": "0.6",
+      "event": "REJECTED",
+      "lease_id": "review-demo-lease",
+      "request_id": "review-demo-001",
+      "request_digest": "d8c3846f163ad1e85bd36cb99dfd0c6c5a8374e22039574ec2f0385076462bac",
+      "reason": "lease_already_used",
+      "actor": "demo-agent",
+      "created_at": "2026-09-14T15:55:25.716492+00:00",
+      "previous_event_hash": "cb721875d02be0fad3948483d5a528b063977d7edd01493159508951a077c584",
+      "event_hash": "2567ba5928e7bd806c8889c55f9dbd8f33bbe44ddd95b173b7aee732dcfd30d8"
+    }
+  ]
+}
