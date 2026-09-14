@@ -1,0 +1,77 @@
+app:
+  id: personal-agent-runtime
+  name: Personal Agent Runtime
+  version: 0.8.0
+  stage: poc
+
+auth:
+  enabled: false
+  provider: none
+  token_expiry_tested: false
+  logout_invalidation_tested: false
+  refresh_failure_tested: false
+
+authorization:
+  roles_defined: true
+  cross_user_access_tested: false
+  privilege_escalation_tested: true
+
+failure:
+  db_timeout_handled: true
+  external_api_timeout_handled: false
+  rate_limit_handled: false
+
+observability:
+  error_alert_tested: false
+  latency_alert_tested: false
+  alert_delivery_verified: false
+
+security:
+  secrets_scanned: false
+  input_validation_tested: true
+  dependency_scan_current: false
+
+billing:
+  enabled: false
+  duplicate_webhook_tested: false
+  payment_failure_tested: false
+  cancellation_race_tested: false
+
+support:
+  route_defined: false
+  deletion_request_runbook: false
+
+migration:
+  rollback_tested: false
+  duplicate_handling_tested: true
+  partial_failure_recovery_tested: false
+
+sla:
+  target_defined: false
+  error_budget_defined: false
+
+load:
+  baseline_rps: 0
+  load_test_rps: 0
+  burst_tested: false
+  capacity_limit_known: false
+
+legal:
+  privacy_policy_present: false
+  consent_recorded: false
+
+par_evidence:
+  unit_tests_passed: 71
+  default_deny_tested: true
+  deny_precedence_tested: true
+  review_non_execution_tested: true
+  one_shot_review_tested: true
+  signed_registry_tested: true
+  signed_review_lease_tested: true
+  signed_receipt_chain_tested: true
+  replay_after_restart_tested: true
+  prsp_receipt_recompute_tested: true
+  promotion_request_binding_tested: true
+  note: >-
+    This manifest intentionally leaves unverified production controls false.
+    PRSP should HOLD rather than infer readiness from local unit tests.
