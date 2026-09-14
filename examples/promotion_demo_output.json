@@ -1,0 +1,49 @@
+{
+  "promotion_request": {
+    "promotion_id": "promotion-demo-001",
+    "app_id": "personal-agent-runtime",
+    "baseline_registry_digest": "91524077d10ebd60ee2d83823f4652c6a252417a7a575fe972844eb84f127125",
+    "proposed_registry_digest": "eb75b3f5b1ea9d49190f29f07c8225e28000e8c72c9fa831fba3169a75b8b318",
+    "capability_delta": {
+      "added": [
+        "github-issue-review"
+      ],
+      "removed": [],
+      "changed": [],
+      "digest": "e4108116d70b5ca8f594641436b075db60a5909f9a3cb402467c248c24adc0c7",
+      "has_authority_change": true,
+      "has_possible_authority_expansion": true
+    },
+    "required_domains": [
+      "authorization",
+      "failure",
+      "observability",
+      "security"
+    ],
+    "requested_by": "maintainer-agent",
+    "target_stage": "production-candidate",
+    "authority_effect": "NONE",
+    "request_digest": "45e6300c18073f7d61252b25598337aa1554cb51a36ade8195b8e09e46ecf83f"
+  },
+  "pass_case": {
+    "verdict": "PASS",
+    "reason": "promotion_evidence_satisfies_prsp_gate",
+    "promotion_id": "promotion-demo-001",
+    "prsp_run_id": "sim-promotion-demo-pass",
+    "missing_domains": [],
+    "observed_gate": "PASS",
+    "eligible": true,
+    "authority_effect": "NONE"
+  },
+  "hold_case": {
+    "verdict": "HOLD",
+    "reason": "prsp_overall_gate_hold",
+    "promotion_id": "promotion-demo-001",
+    "prsp_run_id": "sim-promotion-demo-hold",
+    "missing_domains": [],
+    "observed_gate": "HOLD",
+    "eligible": false,
+    "authority_effect": "NONE"
+  },
+  "important": "PASS is promotion eligibility only; the proposed registry is not activated or signed by this gate."
+}
