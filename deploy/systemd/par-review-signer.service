@@ -1,0 +1,29 @@
+[Unit]
+Description=Personal Agent Runtime Review Signer
+After=local-fs.target
+
+[Service]
+Type=simple
+User=par-review
+Group=par-review
+ExecStart=/opt/personal-agent-runtime/.venv/bin/par-runtime appliance-service --role review_signer --profile /etc/par/appliance_profile.json
+Restart=on-failure
+RuntimeDirectory=par-review
+RuntimeDirectoryMode=0700
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+RestrictSUIDSGID=true
+LockPersonality=true
+MemoryDenyWriteExecute=true
+CapabilityBoundingSet=
+RestrictAddressFamilies=AF_UNIX
+ReadOnlyPaths=/etc/par/appliance_profile.json /etc/par/secrets/review_signer.key
+ReadWritePaths=/run/par-review /var/lib/par/review-signer
+
+[Install]
+WantedBy=multi-user.target
