@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Personal Agent Runtime Promotion Decision",
+  "type": "object",
+  "required": ["verdict", "reason", "promotion_id", "missing_domains", "eligible", "authority_effect"],
+  "properties": {
+    "verdict": {"enum": ["PASS", "REVIEW", "HOLD", "REJECT"]},
+    "reason": {"type": "string"},
+    "promotion_id": {"type": "string"},
+    "prsp_run_id": {"type": ["string", "null"]},
+    "missing_domains": {"type": "array", "items": {"type": "string"}},
+    "observed_gate": {"type": ["string", "null"], "enum": ["PASS", "REVIEW", "HOLD", "REJECT", null]},
+    "eligible": {"type": "boolean"},
+    "authority_effect": {"const": "NONE"}
+  },
+  "additionalProperties": false
+}
