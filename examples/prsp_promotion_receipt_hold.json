@@ -1,0 +1,15 @@
+{
+  "receipt_version": "0.1",
+  "run_id": "sim-par-v08-hold",
+  "generated_at": "2026-09-15T00:00:00Z",
+  "app_id": "personal-agent-runtime",
+  "app_stage": "poc",
+  "overall_gate": "HOLD",
+  "summary": {"PASS": 3, "REVIEW": 0, "HOLD": 1, "REJECT": 0, "SKIP": 0},
+  "results": [
+    {"scenario_id": "AUTHZ-PAR-001", "domain": "authorization", "status": "HOLD", "reason": "Rollback evidence for the proposed scope change is missing."},
+    {"scenario_id": "FAIL-PAR-001", "domain": "failure", "status": "PASS", "reason": "Failure behavior checked."},
+    {"scenario_id": "OBS-PAR-001", "domain": "observability", "status": "PASS", "reason": "Receipt evidence present."},
+    {"scenario_id": "SEC-PAR-001", "domain": "security", "status": "PASS", "reason": "Signature and replay evidence present."}
+  ]
+}
