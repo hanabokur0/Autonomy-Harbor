@@ -1,0 +1,48 @@
+{
+  "registry_id": "repo-maintainer-default",
+  "version": "0.5",
+  "grants": [
+    {
+      "grant_id": "github-issue-create-review",
+      "capability": "github.issue.create",
+      "effect": "REVIEW",
+      "actions": ["create_issue"],
+      "resources": ["hanabokur0/*"]
+    },
+    {
+      "grant_id": "github-file-write-review",
+      "capability": "github.file.write",
+      "effect": "REVIEW",
+      "actions": ["create_file", "update_file"],
+      "resources": ["hanabokur0/*"]
+    },
+    {
+      "grant_id": "github-pr-create-review",
+      "capability": "github.pr.create",
+      "effect": "REVIEW",
+      "actions": ["create_pull_request"],
+      "resources": ["hanabokur0/*"]
+    },
+    {
+      "grant_id": "github-merge-deny",
+      "capability": "github.merge",
+      "effect": "DENY",
+      "actions": ["*"],
+      "resources": ["hanabokur0/*"]
+    },
+    {
+      "grant_id": "github-delete-deny",
+      "capability": "github.repo.delete",
+      "effect": "DENY",
+      "actions": ["*"],
+      "resources": ["hanabokur0/*"]
+    },
+    {
+      "grant_id": "github-permission-deny",
+      "capability": "github.permission.write",
+      "effect": "DENY",
+      "actions": ["*"],
+      "resources": ["hanabokur0/*"]
+    }
+  ]
+}
