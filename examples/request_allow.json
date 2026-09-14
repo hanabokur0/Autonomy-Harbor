@@ -1,0 +1,8 @@
+{
+  "request_id": "example-001",
+  "capability": "tool.echo",
+  "action": "echo",
+  "resource": "console",
+  "payload": {"text": "hello"},
+  "actor": "agent"
+}
