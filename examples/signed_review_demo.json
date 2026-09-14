@@ -1,0 +1,141 @@
+{
+  "registry_attestation_verified": true,
+  "signed_review_lease_verified": true,
+  "approved_attempt": {
+    "receipt_version": "0.1",
+    "request_id": "signed-review-demo-001",
+    "capability": "filesystem.write",
+    "action": "write_text",
+    "resource": "signed-approved/note.txt",
+    "gate": "ALLOW",
+    "gate_reason": "signed_human_review_lease_redeemed",
+    "matched_grant_ids": [
+      "review-write",
+      "signed-review-lease:signed-review-demo-lease"
+    ],
+    "outcome": "SUCCEEDED",
+    "result": {
+      "bytes_written": 42
+    },
+    "registry_id": "signed-review-demo",
+    "registry_version": "0.7",
+    "created_at": "2026-09-14T16:03:23.660593+00:00",
+    "previous_receipt_hash": null,
+    "receipt_hash": "f94bf2b9b567b35bb3e0dbf044c0890937be23f7aa5997ada3292ece6f721fe2"
+  },
+  "approved_signed_receipt": {
+    "envelope_version": "0.7",
+    "payload_type": "action_receipt",
+    "payload": {
+      "receipt_version": "0.1",
+      "request_id": "signed-review-demo-001",
+      "capability": "filesystem.write",
+      "action": "write_text",
+      "resource": "signed-approved/note.txt",
+      "gate": "ALLOW",
+      "gate_reason": "signed_human_review_lease_redeemed",
+      "matched_grant_ids": [
+        "review-write",
+        "signed-review-lease:signed-review-demo-lease"
+      ],
+      "outcome": "SUCCEEDED",
+      "result": {
+        "bytes_written": 42
+      },
+      "registry_id": "signed-review-demo",
+      "registry_version": "0.7",
+      "created_at": "2026-09-14T16:03:23.660593+00:00",
+      "previous_receipt_hash": null,
+      "receipt_hash": "f94bf2b9b567b35bb3e0dbf044c0890937be23f7aa5997ada3292ece6f721fe2"
+    },
+    "payload_hash": "7df9dc18b8e7b387d85627a33a720f6c8bbb49a70b53f314b7c7c2b782bf5126",
+    "signer_id": "runtime:cli-demo",
+    "key_id": "ed25519-1e274debd813bb43b14050b1",
+    "signature_algorithm": "Ed25519",
+    "signed_at": "2026-09-14T16:03:23.655952+00:00",
+    "previous_envelope_hash": null,
+    "signature": "pQk377xCX6im3G2BgraJWfk4qNrx8OMEWlr+zAV2bbZ8Y6ssK6cZ/94JDSzzzmB5idmAjdkG5gfFLipSku6uCA==",
+    "envelope_hash": "d59bdafb4ce8acd1742e6c89a4059b19565016030a21e90a18e53e43ec5a3bd2"
+  },
+  "replay_attempt": {
+    "receipt_version": "0.1",
+    "request_id": "signed-review-demo-001",
+    "capability": "filesystem.write",
+    "action": "write_text",
+    "resource": "signed-approved/note.txt",
+    "gate": "REVIEW",
+    "gate_reason": "signed_review_lease_rejected:lease_already_used",
+    "matched_grant_ids": [
+      "review-write"
+    ],
+    "outcome": "NOT_EXECUTED",
+    "result": {},
+    "registry_id": "signed-review-demo",
+    "registry_version": "0.7",
+    "created_at": "2026-09-14T16:03:23.661285+00:00",
+    "previous_receipt_hash": "f94bf2b9b567b35bb3e0dbf044c0890937be23f7aa5997ada3292ece6f721fe2",
+    "receipt_hash": "9885207fe912cb1fb8c8823bbd6dec4f9ccaccb7cbcb265208a9b4594ab7dcef"
+  },
+  "replay_signed_receipt": {
+    "envelope_version": "0.7",
+    "payload_type": "action_receipt",
+    "payload": {
+      "receipt_version": "0.1",
+      "request_id": "signed-review-demo-001",
+      "capability": "filesystem.write",
+      "action": "write_text",
+      "resource": "signed-approved/note.txt",
+      "gate": "REVIEW",
+      "gate_reason": "signed_review_lease_rejected:lease_already_used",
+      "matched_grant_ids": [
+        "review-write"
+      ],
+      "outcome": "NOT_EXECUTED",
+      "result": {},
+      "registry_id": "signed-review-demo",
+      "registry_version": "0.7",
+      "created_at": "2026-09-14T16:03:23.661285+00:00",
+      "previous_receipt_hash": "f94bf2b9b567b35bb3e0dbf044c0890937be23f7aa5997ada3292ece6f721fe2",
+      "receipt_hash": "9885207fe912cb1fb8c8823bbd6dec4f9ccaccb7cbcb265208a9b4594ab7dcef"
+    },
+    "payload_hash": "5ba06b3bba91edd6580ff7522889f01b4216105529e08c8dea4189204db1f53a",
+    "signer_id": "runtime:cli-demo",
+    "key_id": "ed25519-1e274debd813bb43b14050b1",
+    "signature_algorithm": "Ed25519",
+    "signed_at": "2026-09-14T16:03:23.655952+00:00",
+    "previous_envelope_hash": "d59bdafb4ce8acd1742e6c89a4059b19565016030a21e90a18e53e43ec5a3bd2",
+    "signature": "rfFZ63fxhpWLIBGD/xAp2COrh77RBeC7V9Bg6H9CzwsOEHiQQzIUPEJzf+kEGVioojOVrPJ1pZRqUt4z7Ob+Bg==",
+    "envelope_hash": "6c593f775a6e9343afdfc5c732ea5d719def462a102d88ed87446219563a3ca9"
+  },
+  "signed_receipt_chain": {
+    "ok": true,
+    "verified_count": 2,
+    "reason": "verified"
+  },
+  "trust_store": [
+    {
+      "key_id": "ed25519-a9b2b27dccbb522a9f0b7433",
+      "subject": "human:cli-demo",
+      "roles": [
+        "review_issuer"
+      ],
+      "status": "ACTIVE"
+    },
+    {
+      "key_id": "ed25519-d01dcc13d6cf6cadab5fda1e",
+      "subject": "control-plane:cli-demo",
+      "roles": [
+        "capability_authority"
+      ],
+      "status": "ACTIVE"
+    },
+    {
+      "key_id": "ed25519-1e274debd813bb43b14050b1",
+      "subject": "runtime:cli-demo",
+      "roles": [
+        "runtime_receipt_signer"
+      ],
+      "status": "ACTIVE"
+    }
+  ]
+}
