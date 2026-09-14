@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/personal-agent-runtime/review-event-receipt.schema.json",
+  "title": "ReviewEventReceipt",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "event_version", "event", "lease_id", "request_digest", "reason",
+    "actor", "created_at", "previous_event_hash", "event_hash"
+  ],
+  "properties": {
+    "event_version": {"const": "0.6"},
+    "event": {"enum": ["ISSUED", "REDEEMED", "CANCELLED", "REJECTED"]},
+    "lease_id": {"type": "string", "minLength": 1},
+    "request_id": {"type": ["string", "null"]},
+    "request_digest": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "reason": {"type": "string", "minLength": 1},
+    "actor": {"type": "string", "minLength": 1},
+    "created_at": {"type": "string", "format": "date-time"},
+    "previous_event_hash": {"type": ["string", "null"]},
+    "event_hash": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+  }
+}
