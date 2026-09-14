@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/personal-agent-runtime/receipt.schema.json",
+  "title": "ActionReceipt",
+  "type": "object",
+  "required": [
+    "receipt_version", "request_id", "capability", "action", "resource",
+    "gate", "gate_reason", "outcome", "registry_id", "registry_version",
+    "created_at", "receipt_hash"
+  ],
+  "properties": {
+    "receipt_version": {"type": "string"},
+    "request_id": {"type": "string"},
+    "capability": {"type": "string"},
+    "action": {"type": "string"},
+    "resource": {"type": "string"},
+    "gate": {"enum": ["ALLOW", "REVIEW", "DENY"]},
+    "gate_reason": {"type": "string"},
+    "matched_grant_ids": {"type": "array", "items": {"type": "string"}},
+    "outcome": {"enum": ["SUCCEEDED", "FAILED", "NOT_EXECUTED"]},
+    "result": {"type": "object"},
+    "registry_id": {"type": "string"},
+    "registry_version": {"type": "string"},
+    "created_at": {"type": "string"},
+    "previous_receipt_hash": {"type": ["string", "null"]},
+    "receipt_hash": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+  }
+}
