@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Personal Agent Runtime Promotion Request",
+  "type": "object",
+  "required": ["promotion_id", "app_id", "baseline_registry_digest", "proposed_registry_digest", "capability_delta", "required_domains", "requested_by", "target_stage", "authority_effect", "request_digest"],
+  "properties": {
+    "promotion_id": {"type": "string", "minLength": 1},
+    "app_id": {"type": "string", "minLength": 1},
+    "baseline_registry_digest": {"type": "string", "minLength": 64},
+    "proposed_registry_digest": {"type": "string", "minLength": 64},
+    "capability_delta": {"type": "object"},
+    "required_domains": {"type": "array", "minItems": 1, "items": {"type": "string"}},
+    "requested_by": {"type": "string"},
+    "target_stage": {"type": "string"},
+    "authority_effect": {"const": "NONE"},
+    "request_digest": {"type": "string", "minLength": 64}
+  },
+  "additionalProperties": false
+}
