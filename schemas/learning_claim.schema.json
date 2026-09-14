@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.local/personal-agent-runtime/learning_claim.schema.json",
+  "title": "Learning Claim",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["claim_id", "classification", "preserve_unknown", "authority_effect"],
+  "properties": {
+    "claim_id": {"type": "string", "minLength": 1},
+    "classification": {"enum": ["LEARNING_CANDIDATE", "NO_CLAIM", "UNKNOWN"]},
+    "learning_labels": {"type": "array", "items": {"type": "string"}},
+    "confidence": {"type": ["number", "null"], "minimum": 0, "maximum": 1},
+    "preserve_unknown": {"type": "boolean"},
+    "candidate_protocol_update": {"type": ["object", "null"]},
+    "evidence_refs": {"type": "array", "items": {"type": "string"}},
+    "authority_effect": {"const": "NONE"}
+  }
+}
