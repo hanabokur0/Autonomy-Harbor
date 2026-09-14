@@ -1,0 +1,48 @@
+{
+  "appliance_version": "0.9",
+  "profile": "/mnt/data/par_v09_demo_final/config/appliance_profile.json",
+  "service_pids": {
+    "planner": 2756,
+    "review_signer": 2757,
+    "gate": 2758,
+    "executor": 2759,
+    "verifier": 2760
+  },
+  "process_isolation_confirmed": true,
+  "first_gate": {
+    "verdict": "REVIEW",
+    "reason": "human_review_required",
+    "matched_grant_ids": [
+      "sandbox-write-review"
+    ]
+  },
+  "review_lease_signer": "human-review-broker",
+  "second_gate": {
+    "verdict": "ALLOW",
+    "reason": "signed_human_review_lease_redeemed",
+    "matched_grant_ids": [
+      "sandbox-write-review",
+      "signed-review-lease:signed-lease-appliance-demo-001-1789403005"
+    ]
+  },
+  "execution_permit_signer": "runtime-gate",
+  "raw_executor_call": {
+    "ok": false,
+    "reason": "signed_execution_permit_required"
+  },
+  "execution": {
+    "executed": true,
+    "outcome": "SUCCEEDED",
+    "result_signer": "runtime-executor"
+  },
+  "permit_replay": {
+    "executed": false,
+    "reason": "permit_already_used"
+  },
+  "verification": {
+    "verified": true,
+    "outcome": "SUCCEEDED",
+    "receipt_signer": "runtime-verifier"
+  },
+  "written_file": "/mnt/data/par_v09_demo_final/sandbox/approved/appliance.txt"
+}
