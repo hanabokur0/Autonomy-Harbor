@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Repo Maintainer Snapshot",
+  "type": "object",
+  "required": ["snapshot_id", "repositories"],
+  "properties": {
+    "snapshot_id": {"type": "string", "minLength": 1},
+    "repositories": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["full_name"],
+        "properties": {
+          "full_name": {"type": "string", "minLength": 1},
+          "repo_class": {"enum": ["core", "core_candidate", "core_promotion_gate", "optional_core", "optional", "experimental", "legacy"]},
+          "maturity": {"type": "string"},
+          "size_kb": {"type": "integer", "minimum": 0},
+          "archived": {"type": "boolean"},
+          "signals": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+          "evidence": {"type": "array", "items": {"type": "string"}}
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}
