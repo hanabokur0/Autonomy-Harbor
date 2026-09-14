@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/personal-agent-runtime/trusted_signer.schema.json",
+  "title": "TrustedSigner",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["key_id", "subject", "public_key_b64", "roles", "status"],
+  "properties": {
+    "key_id": {"type": "string", "minLength": 1},
+    "subject": {"type": "string", "minLength": 1},
+    "public_key_b64": {"type": "string", "minLength": 1},
+    "roles": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "enum": ["review_issuer", "capability_authority", "runtime_receipt_signer"]
+      }
+    },
+    "status": {"enum": ["ACTIVE", "REVOKED"]}
+  }
+}
