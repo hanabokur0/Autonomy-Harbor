@@ -1,0 +1,30 @@
+{
+  "registry_id": "local-default",
+  "version": "1",
+  "grants": [
+    {
+      "grant_id": "echo",
+      "capability": "tool.echo",
+      "effect": "ALLOW",
+      "actions": ["echo"],
+      "resources": ["console"],
+      "issued_by": "human"
+    },
+    {
+      "grant_id": "files-read",
+      "capability": "filesystem.read",
+      "effect": "ALLOW",
+      "actions": ["read_text"],
+      "resources": ["workspace/*"],
+      "issued_by": "human"
+    },
+    {
+      "grant_id": "secrets-deny",
+      "capability": "filesystem.read",
+      "effect": "DENY",
+      "actions": ["read_text"],
+      "resources": ["workspace/secrets/*"],
+      "issued_by": "human"
+    }
+  ]
+}
