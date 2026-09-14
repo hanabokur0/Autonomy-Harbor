@@ -1,0 +1,29 @@
+[Unit]
+Description=Personal Agent Runtime Sandboxed Executor
+After=local-fs.target
+
+[Service]
+Type=simple
+User=par-executor
+Group=par-runtime
+ExecStart=/opt/personal-agent-runtime/.venv/bin/par-runtime appliance-service --role executor --profile /etc/par/appliance_profile.json
+Restart=on-failure
+RuntimeDirectory=par
+RuntimeDirectoryMode=0770
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+RestrictSUIDSGID=true
+LockPersonality=true
+MemoryDenyWriteExecute=true
+CapabilityBoundingSet=
+RestrictAddressFamilies=AF_UNIX
+ReadOnlyPaths=/etc/par/appliance_profile.json /etc/par/executor_trust.json /etc/par/secrets/executor_result_signer.key
+ReadWritePaths=/run/par /var/lib/par/executor /var/lib/par/sandbox
+
+[Install]
+WantedBy=multi-user.target
