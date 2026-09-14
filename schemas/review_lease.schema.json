@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/personal-agent-runtime/review-lease.schema.json",
+  "title": "ReviewLease",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "lease_id", "request_digest", "capability", "action", "resource",
+    "review_grant_ids", "issued_by", "issued_at", "expires_at",
+    "max_uses", "issuer_type"
+  ],
+  "properties": {
+    "lease_id": {"type": "string", "minLength": 1},
+    "request_digest": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "capability": {"type": "string", "minLength": 1},
+    "action": {"type": "string", "minLength": 1},
+    "resource": {"type": "string", "minLength": 1},
+    "review_grant_ids": {"type": "array", "items": {"type": "string"}},
+    "issued_by": {"type": "string", "minLength": 1},
+    "issued_at": {"type": "string", "format": "date-time"},
+    "expires_at": {"type": "string", "format": "date-time"},
+    "max_uses": {"const": 1},
+    "issuer_type": {"const": "HUMAN"},
+    "authority_effect": {"const": "ONE_SHOT_REVIEW_ONLY"}
+  }
+}
