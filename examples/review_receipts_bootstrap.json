@@ -1,0 +1,38 @@
+[
+  {
+    "request_id": "maint-bootstrap-001",
+    "resource": "hanabokur0/LoPAS-CHD-Protocol",
+    "gate": "REVIEW",
+    "gate_reason": "human_review_required",
+    "outcome": "NOT_EXECUTED",
+    "matched_grant_ids": [
+      "github-issue-create-review"
+    ],
+    "receipt_hash": "f14b52cf767c39f4762b88ca37b887d51ba818c754ab09a4caeb6da7ba5d74c0",
+    "previous_receipt_hash": null
+  },
+  {
+    "request_id": "maint-bootstrap-002",
+    "resource": "hanabokur0/LoPAS-DRM",
+    "gate": "REVIEW",
+    "gate_reason": "human_review_required",
+    "outcome": "NOT_EXECUTED",
+    "matched_grant_ids": [
+      "github-issue-create-review"
+    ],
+    "receipt_hash": "532dba26c2cfc492535c64c92c1259e10ec0b3ee77c323636a4012d7d9c1ec3b",
+    "previous_receipt_hash": "f14b52cf767c39f4762b88ca37b887d51ba818c754ab09a4caeb6da7ba5d74c0"
+  },
+  {
+    "request_id": "maint-bootstrap-003",
+    "resource": "hanabokur0/LoPAS-LCA",
+    "gate": "REVIEW",
+    "gate_reason": "human_review_required",
+    "outcome": "NOT_EXECUTED",
+    "matched_grant_ids": [
+      "github-issue-create-review"
+    ],
+    "receipt_hash": "1082ea8a374e0f1c0797709cfb38494b552943e022a3800ed21389ef9b8a5b83",
+    "previous_receipt_hash": "532dba26c2cfc492535c64c92c1259e10ec0b3ee77c323636a4012d7d9c1ec3b"
+  }
+]
