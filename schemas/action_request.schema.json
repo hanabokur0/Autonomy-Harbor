@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/personal-agent-runtime/action-request.schema.json",
+  "title": "ActionRequest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["request_id", "capability", "action", "resource"],
+  "properties": {
+    "request_id": {"type": "string", "minLength": 1},
+    "capability": {"type": "string", "minLength": 1},
+    "action": {"type": "string", "minLength": 1},
+    "resource": {"type": "string", "minLength": 1},
+    "payload": {"type": "object"},
+    "actor": {"type": "string", "default": "agent"}
+  }
+}
