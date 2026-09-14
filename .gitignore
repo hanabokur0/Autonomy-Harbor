@@ -1,3 +1,4 @@
+# Python
 __pycache__/
 *.py[cod]
 .pytest_cache/
@@ -6,10 +7,27 @@ venv/
 *.egg-info/
 dist/
 build/
+
+# Test / coverage
+.coverage
+.coverage.*
+htmlcov/
+
+# Runtime state
 *.db
 *.sqlite
 *.sqlite3
+*.log
+
+# Secrets / signing keys
 keys/
 *.key
+*.pem
 .env
+.env.*
+
+# OS / editor
 .DS_Store
+Thumbs.db
+.vscode/
+.idea/
