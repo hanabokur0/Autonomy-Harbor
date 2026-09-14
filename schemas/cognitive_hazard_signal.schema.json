@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.local/personal-agent-runtime/cognitive_hazard_signal.schema.json",
+  "title": "Cognitive Hazard Signal",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["signal_id", "stage", "verdict", "authority_effect"],
+  "properties": {
+    "signal_id": {"type": "string", "minLength": 1},
+    "stage": {"enum": ["pre_deliberation", "post_execution"]},
+    "verdict": {"enum": ["CONTINUE", "CONTAIN", "REFRAME", "OBSERVE_MORE", "HOLD", "REJECT"]},
+    "phase": {"type": ["string", "null"]},
+    "risk_score": {"type": ["number", "null"], "minimum": 0, "maximum": 1},
+    "signals": {
+      "type": "object",
+      "additionalProperties": {"type": ["number", "string", "boolean", "null"]}
+    },
+    "reason": {"type": ["string", "null"]},
+    "evidence_refs": {"type": "array", "items": {"type": "string"}},
+    "authority_effect": {"const": "NONE"}
+  }
+}
