@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/personal-agent-runtime/signed_envelope.schema.json",
+  "title": "SignedEnvelope",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "envelope_version", "payload_type", "payload", "payload_hash",
+    "signer_id", "key_id", "signature_algorithm", "signed_at",
+    "signature", "previous_envelope_hash", "envelope_hash"
+  ],
+  "properties": {
+    "envelope_version": {"const": "0.7"},
+    "payload_type": {"type": "string", "minLength": 1},
+    "payload": {"type": "object"},
+    "payload_hash": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "signer_id": {"type": "string", "minLength": 1},
+    "key_id": {"type": "string", "minLength": 1},
+    "signature_algorithm": {"const": "Ed25519"},
+    "signed_at": {"type": "string", "format": "date-time"},
+    "signature": {"type": "string", "minLength": 1},
+    "previous_envelope_hash": {
+      "oneOf": [
+        {"type": "null"},
+        {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+      ]
+    },
+    "envelope_hash": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+  }
+}
