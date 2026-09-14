@@ -1,0 +1,21 @@
+{
+  "appliance_version": "0.9",
+  "profile_id": "three-man-pc-reference",
+  "transport": "unix-domain-socket",
+  "authority_model": {
+    "planner_may_sign": false,
+    "review_signer_may_execute": false,
+    "gate_may_execute": false,
+    "executor_may_change_registry": false,
+    "verifier_may_execute": false,
+    "execution_requires_gate_permit": true
+  },
+  "services": {
+    "planner": {"socket": "/run/par/planner.sock", "state_dir": "/var/lib/par/planner", "private_keys": []},
+    "review_signer": {"socket": "/run/par-review/review_signer.sock", "state_dir": "/var/lib/par/review-signer", "private_key": "/etc/par/secrets/review_signer.key", "subject": "human-review-broker", "roles": ["review_issuer"]},
+    "gate": {"socket": "/run/par/gate.sock", "state_dir": "/var/lib/par/gate", "registry": "/etc/par/capability_registry.json", "trust_store": "/etc/par/gate_trust.json", "private_key": "/etc/par/secrets/gate_permit_signer.key", "subject": "runtime-gate", "roles": ["execution_permit_issuer"], "review_replay_db": "/var/lib/par/gate/review_replay.sqlite3", "permit_ttl_seconds": 30},
+    "executor": {"socket": "/run/par/executor.sock", "state_dir": "/var/lib/par/executor", "trust_store": "/etc/par/executor_trust.json", "private_key": "/etc/par/secrets/executor_result_signer.key", "subject": "runtime-executor", "roles": ["executor_result_signer"], "permit_replay_db": "/var/lib/par/executor/permit_replay.sqlite3", "sandbox_root": "/var/lib/par/sandbox"},
+    "verifier": {"socket": "/run/par/verifier.sock", "state_dir": "/var/lib/par/verifier", "trust_store": "/etc/par/verifier_trust.json", "private_key": "/etc/par/secrets/verifier_receipt_signer.key", "subject": "runtime-verifier", "roles": ["runtime_receipt_signer"], "chain_state": "/var/lib/par/verifier/receipt_chain.json"}
+  },
+  "public_trust_store": "/etc/par/public_trust.json"
+}
