@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Execution Permit Payload",
+  "type": "object",
+  "required": [
+    "permit_version", "permit_id", "request_digest", "request_id", "capability", "action",
+    "resource", "actor", "gate_verdict", "gate_reason", "matched_grant_ids", "registry_id",
+    "registry_version", "issued_at", "expires_at", "max_uses", "authority_effect"
+  ],
+  "properties": {
+    "permit_version": {"const": "0.9"},
+    "permit_id": {"type": "string", "minLength": 1},
+    "request_digest": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "request_id": {"type": "string"},
+    "capability": {"type": "string"},
+    "action": {"type": "string"},
+    "resource": {"type": "string"},
+    "actor": {"type": "string"},
+    "gate_verdict": {"const": "ALLOW"},
+    "gate_reason": {"type": "string"},
+    "matched_grant_ids": {"type": "array", "items": {"type": "string"}},
+    "registry_id": {"type": "string"},
+    "registry_version": {"type": "string"},
+    "issued_at": {"type": "string"},
+    "expires_at": {"type": "string"},
+    "max_uses": {"const": 1},
+    "authority_effect": {"const": "EXECUTION_ONCE"}
+  },
+  "additionalProperties": false
+}
