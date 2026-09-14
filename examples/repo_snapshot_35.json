@@ -1,0 +1,398 @@
+{
+  "snapshot_id": "hanabokur0-2026-09-14-bootstrap",
+  "repositories": [
+    {
+      "full_name": "hanabokur0/LoPAS-Open-Translator-Core",
+      "repo_class": "optional",
+      "maturity": "unknown",
+      "size_kb": 126,
+      "archived": false,
+      "signals": [],
+      "evidence": []
+    },
+    {
+      "full_name": "hanabokur0/lopas-demo",
+      "repo_class": "optional",
+      "maturity": "unknown",
+      "size_kb": 90,
+      "archived": false,
+      "signals": [],
+      "evidence": []
+    },
+    {
+      "full_name": "hanabokur0/LoPASUSC",
+      "repo_class": "optional",
+      "maturity": "unknown",
+      "size_kb": 129,
+      "archived": false,
+      "signals": [],
+      "evidence": []
+    },
+    {
+      "full_name": "hanabokur0/Action-Executor",
+      "repo_class": "optional_core",
+      "maturity": "prototype",
+      "size_kb": 16,
+      "archived": false,
+      "signals": [
+        "duplicate_role"
+      ],
+      "evidence": [
+        "Execution behavior overlaps the current sandboxed reference executor; consolidation should be reviewed rather than blindly merged."
+      ]
+    },
+    {
+      "full_name": "hanabokur0/translated-voice",
+      "repo_class": "optional",
+      "maturity": "unknown",
+      "size_kb": 10,
+      "archived": false,
+      "signals": [],
+      "evidence": []
+    },
+    {
+      "full_name": "hanabokur0/skill-library",
+      "repo_class": "optional",
+      "maturity": "unknown",
+      "size_kb": 34,
+      "archived": false,
+      "signals": [],
+      "evidence": []
+    },
+    {
+      "full_name": "hanabokur0/Meta-Observer",
+      "repo_class": "optional_core",
+      "maturity": "experimental",
+      "size_kb": 16,
+      "archived": false,
+      "signals": [
+        "already_integrated"
+      ],
+      "evidence": [
+        "Declared in Personal Agent Runtime component manifest as observation layer."
+      ]
+    },
+    {
+      "full_name": "hanabokur0/LoPAS-Core",
+      "repo_class": "optional",
+      "maturity": "unknown",
+      "size_kb": 50,
+      "archived": false,
+      "signals": [],
+      "evidence": []
+    },
+    {
+      "full_name": "hanabokur0/sjri-tli-simulator",
+      "repo_class": "optional",
+      "maturity": "unknown",
+      "size_kb": 57,
+      "archived": false,
+      "signals": [],
+      "evidence": []
+    },
+    {
+      "full_name": "hanabokur0/lopas-distributed-learning",
+      "repo_class": "optional",
+      "maturity": "unknown",
+      "size_kb": 186,
+      "archived": false,
+      "signals": [],
+      "evidence": []
+    },
+    {
+      "full_name": "hanabokur0/LoPAS-MCCP",
+      "repo_class": "core_candidate",
+      "maturity": "implemented_prototype",
+      "size_kb": 8,
+      "archived": false,
+      "signals": [
+        "already_integrated"
+      ],
+      "evidence": [
+        "Context-admission role is already represented in the runtime architecture."
+      ]
+    },
+    {
+      "full_name": "hanabokur0/shiftguard",
+      "repo_class": "optional",
+      "maturity": "unknown",
+      "size_kb": 95,
+      "archived": false,
+      "signals": [],
+      "evidence": []
+    },
+    {
+      "full_name": "hanabokur0/LoPAS-DRM",
+      "repo_class": "core_candidate",
+      "maturity": "specification",
+      "size_kb": 8,
+      "archived": false,
+      "signals": [
+        "runtime_integration_gap",
+        "spec_only",
+        "missing_tests"
+      ],
+      "evidence": [
+        "Current repository is README/specification only.",
+        "Runtime v0.4 declares DRM as a core candidate but has no executable adapter."
+      ]
+    },
+    {
+      "full_name": "hanabokur0/ai-composition-tools",
+      "repo_class": "optional",
+      "maturity": "unknown",
+      "size_kb": 67,
+      "archived": false,
+      "signals": [],
+      "evidence": []
+    },
+    {
+      "full_name": "hanabokur0/shikou_tree",
+      "repo_class": "optional",
+      "maturity": "unknown",
+      "size_kb": 75,
+      "archived": false,
+      "signals": [],
+      "evidence": []
+    },
+    {
+      "full_name": "hanabokur0/LoPAS-CHD-Protocol",
+      "repo_class": "core_candidate",
+      "maturity": "specification_with_integration_contract",
+      "size_kb": 86,
+      "archived": false,
+      "signals": [
+        "runtime_integration_gap",
+        "spec_only",
+        "missing_tests"
+      ],
+      "evidence": [
+        "Repository documents local-agent/API contracts but no executable scoring engine is present at top level.",
+        "Runtime v0.3/v0.4 declares CHD as a core candidate."
+      ]
+    },
+    {
+      "full_name": "hanabokur0/Dynamic-Schema-Defense",
+      "repo_class": "experimental",
+      "maturity": "experimental",
+      "size_kb": 9,
+      "archived": false,
+      "signals": [],
+      "evidence": [
+        "Defense-in-depth concept; intentionally not a root of trust."
+      ]
+    },
+    {
+      "full_name": "hanabokur0/information-compost",
+      "repo_class": "optional_core",
+      "maturity": "implemented_minimal",
+      "size_kb": 62,
+      "archived": false,
+      "signals": [
+        "already_integrated"
+      ],
+      "evidence": [
+        "Already positioned as post-execution reflective memory."
+      ]
+    },
+    {
+      "full_name": "hanabokur0/ProtocolMemory-v0.2",
+      "repo_class": "optional_core",
+      "maturity": "prototype",
+      "size_kb": 26,
+      "archived": false,
+      "signals": [
+        "already_integrated"
+      ],
+      "evidence": [
+        "Already positioned as bounded slow-learning layer."
+      ]
+    },
+    {
+      "full_name": "hanabokur0/LoPAS-DDA",
+      "repo_class": "core_candidate",
+      "maturity": "experimental",
+      "size_kb": 41,
+      "archived": false,
+      "signals": [
+        "runtime_integration_gap"
+      ],
+      "evidence": [
+        "Deliberative DDA is declared in architecture but has no runtime adapter yet."
+      ]
+    },
+    {
+      "full_name": "hanabokur0/LoPAS-Studio",
+      "repo_class": "optional",
+      "maturity": "unknown",
+      "size_kb": 46,
+      "archived": false,
+      "signals": [],
+      "evidence": []
+    },
+    {
+      "full_name": "hanabokur0/jp-copyright-30-4-gate",
+      "repo_class": "optional",
+      "maturity": "unknown",
+      "size_kb": 62,
+      "archived": false,
+      "signals": [],
+      "evidence": []
+    },
+    {
+      "full_name": "hanabokur0/drift-intellect",
+      "repo_class": "optional",
+      "maturity": "unknown",
+      "size_kb": 47,
+      "archived": false,
+      "signals": [],
+      "evidence": []
+    },
+    {
+      "full_name": "hanabokur0/lopas-lptm-minimal",
+      "repo_class": "core_candidate",
+      "maturity": "implemented_minimal",
+      "size_kb": 17,
+      "archived": false,
+      "signals": [
+        "already_integrated"
+      ],
+      "evidence": [
+        "Phase sensing is already represented in runtime architecture."
+      ]
+    },
+    {
+      "full_name": "hanabokur0/Verifiable-Capability-Exchange",
+      "repo_class": "optional_core",
+      "maturity": "experimental_reference",
+      "size_kb": 68,
+      "archived": false,
+      "signals": [
+        "missing_adapter"
+      ],
+      "evidence": [
+        "Capability evidence patterns are reusable but not yet connected to runtime receipts."
+      ]
+    },
+    {
+      "full_name": "hanabokur0/production-readiness-simulation-pack",
+      "repo_class": "core_promotion_gate",
+      "maturity": "implemented_v0_1",
+      "size_kb": 104,
+      "archived": false,
+      "signals": [
+        "missing_adapter"
+      ],
+      "evidence": [
+        "PRSP is the declared production promotion gate; runtime manifest export is not yet executable."
+      ]
+    },
+    {
+      "full_name": "hanabokur0/RNC",
+      "repo_class": "optional_core",
+      "maturity": "prototype",
+      "size_kb": 30,
+      "archived": false,
+      "signals": [
+        "missing_adapter"
+      ],
+      "evidence": [
+        "Responsibility normalization is consumed through DRM but is not yet connected by a machine-readable adapter."
+      ]
+    },
+    {
+      "full_name": "hanabokur0/MVPL-Minimal-Verification-Protocol-Layer",
+      "repo_class": "optional",
+      "maturity": "prototype",
+      "size_kb": 56,
+      "archived": false,
+      "signals": [],
+      "evidence": [
+        "Verification integration remains domain-specific."
+      ]
+    },
+    {
+      "full_name": "hanabokur0/classification-simulation-pack",
+      "repo_class": "optional_core",
+      "maturity": "implemented",
+      "size_kb": 176,
+      "archived": false,
+      "signals": [
+        "already_integrated"
+      ],
+      "evidence": [
+        "Operating-condition simulation is already represented in architecture."
+      ]
+    },
+    {
+      "full_name": "hanabokur0/Sampled-Review-Inspector",
+      "repo_class": "optional",
+      "maturity": "unknown",
+      "size_kb": 22,
+      "archived": false,
+      "signals": [],
+      "evidence": []
+    },
+    {
+      "full_name": "hanabokur0/lopas-protocol-foundry",
+      "repo_class": "core",
+      "maturity": "reference_runtime",
+      "size_kb": 384,
+      "archived": false,
+      "signals": [
+        "already_integrated"
+      ],
+      "evidence": [
+        "Foundry is the protocol compilation core and already has an integration boundary document."
+      ]
+    },
+    {
+      "full_name": "hanabokur0/VisualStructure",
+      "repo_class": "optional",
+      "maturity": "unknown",
+      "size_kb": 37,
+      "archived": false,
+      "signals": [],
+      "evidence": []
+    },
+    {
+      "full_name": "hanabokur0/Protocol-Engine-LoPAS-Runtime-Core-",
+      "repo_class": "legacy",
+      "maturity": "early_prototype",
+      "size_kb": 52,
+      "archived": false,
+      "signals": [
+        "legacy",
+        "duplicate_role"
+      ],
+      "evidence": [
+        "Repository README marks this runtime core as historical and points to newer components."
+      ]
+    },
+    {
+      "full_name": "hanabokur0/cag-core",
+      "repo_class": "optional",
+      "maturity": "unknown",
+      "size_kb": 29,
+      "archived": false,
+      "signals": [],
+      "evidence": []
+    },
+    {
+      "full_name": "hanabokur0/LoPAS-LCA",
+      "repo_class": "core_candidate",
+      "maturity": "specification",
+      "size_kb": 17,
+      "archived": false,
+      "signals": [
+        "runtime_integration_gap",
+        "spec_only",
+        "missing_tests"
+      ],
+      "evidence": [
+        "Repository is specification/docs only.",
+        "Runtime v0.4 declares LCA as the learning-claim gate but has no executable validator adapter."
+      ]
+    }
+  ]
+}
