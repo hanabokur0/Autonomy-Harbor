@@ -1,0 +1,51 @@
+{
+  "receipt_version": "0.5",
+  "snapshot_id": "hanabokur0-2026-09-14-bootstrap",
+  "observed_repositories": 35,
+  "selected": [
+    {
+      "full_name": "hanabokur0/LoPAS-CHD-Protocol",
+      "score": 90,
+      "task_type": "integration_adapter",
+      "title": "[Repo Maintainer] Add Personal Agent Runtime integration adapter — LoPAS-CHD-Protocol",
+      "rationale": "LoPAS-CHD-Protocol is classified as core_candidate with maturity 'specification_with_integration_contract'. Observed maintenance signals: runtime_integration_gap, spec_only, missing_tests. Create a reviewable maintenance task; do not modify the repository automatically.",
+      "evidence": [
+        "Repository documents local-agent/API contracts but no executable scoring engine is present at top level.",
+        "Runtime v0.3/v0.4 declares CHD as a core candidate."
+      ],
+      "requested_capability": "github.issue.create",
+      "requested_action": "create_issue",
+      "route": "REVIEW"
+    },
+    {
+      "full_name": "hanabokur0/LoPAS-DRM",
+      "score": 90,
+      "task_type": "integration_adapter",
+      "title": "[Repo Maintainer] Add Personal Agent Runtime integration adapter — LoPAS-DRM",
+      "rationale": "LoPAS-DRM is classified as core_candidate with maturity 'specification'. Observed maintenance signals: runtime_integration_gap, spec_only, missing_tests. Create a reviewable maintenance task; do not modify the repository automatically.",
+      "evidence": [
+        "Current repository is README/specification only.",
+        "Runtime v0.4 declares DRM as a core candidate but has no executable adapter."
+      ],
+      "requested_capability": "github.issue.create",
+      "requested_action": "create_issue",
+      "route": "REVIEW"
+    },
+    {
+      "full_name": "hanabokur0/LoPAS-LCA",
+      "score": 90,
+      "task_type": "integration_adapter",
+      "title": "[Repo Maintainer] Add Personal Agent Runtime integration adapter — LoPAS-LCA",
+      "rationale": "LoPAS-LCA is classified as core_candidate with maturity 'specification'. Observed maintenance signals: runtime_integration_gap, spec_only, missing_tests. Create a reviewable maintenance task; do not modify the repository automatically.",
+      "evidence": [
+        "Repository is specification/docs only.",
+        "Runtime v0.4 declares LCA as the learning-claim gate but has no executable validator adapter."
+      ],
+      "requested_capability": "github.issue.create",
+      "requested_action": "create_issue",
+      "route": "REVIEW"
+    }
+  ],
+  "input_digest": "2e27ced06b90e8acc1140c1c531e639f120b7e627003ae4cd3fc750bfebd04e2",
+  "receipt_hash": "d9ce0059b873ef2d39f45c09c5b586489484421c4e27d5900014cd48018cc0e7"
+}
