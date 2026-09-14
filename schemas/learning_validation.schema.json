@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.local/personal-agent-runtime/learning_validation.schema.json",
+  "title": "Learning Validation",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["validation_id", "claim_id", "verdict", "structural_change_detected", "authority_effect"],
+  "properties": {
+    "validation_id": {"type": "string", "minLength": 1},
+    "claim_id": {"type": "string", "minLength": 1},
+    "verdict": {"enum": ["VALIDATED", "UNRESOLVED", "REJECTED"]},
+    "structural_change_detected": {"type": ["boolean", "null"]},
+    "validation_confidence": {"type": ["number", "null"], "minimum": 0, "maximum": 1},
+    "route": {"enum": ["PROMOTE_CANDIDATE", "RETURN_TO_CLASSIFICATION", "RETAIN_UNKNOWN", "REJECT"]},
+    "evidence_refs": {"type": "array", "items": {"type": "string"}},
+    "authority_effect": {"const": "NONE"}
+  }
+}
