@@ -1,0 +1,29 @@
+[Unit]
+Description=Personal Agent Runtime Capability Gate
+After=local-fs.target
+
+[Service]
+Type=simple
+User=par-gate
+Group=par-runtime
+ExecStart=/opt/personal-agent-runtime/.venv/bin/par-runtime appliance-service --role gate --profile /etc/par/appliance_profile.json
+Restart=on-failure
+RuntimeDirectory=par
+RuntimeDirectoryMode=0770
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+RestrictSUIDSGID=true
+LockPersonality=true
+MemoryDenyWriteExecute=true
+CapabilityBoundingSet=
+RestrictAddressFamilies=AF_UNIX
+ReadOnlyPaths=/etc/par/appliance_profile.json /etc/par/capability_registry.json /etc/par/gate_trust.json /etc/par/secrets/gate_permit_signer.key
+ReadWritePaths=/run/par /var/lib/par/gate
+
+[Install]
+WantedBy=multi-user.target
