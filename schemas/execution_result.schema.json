@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Executor Result Payload",
+  "type": "object",
+  "required": [
+    "result_version", "result_id", "permit_id", "permit_hash", "request_digest", "request_id",
+    "capability", "action", "resource", "outcome", "result", "executed_at", "authority_effect"
+  ],
+  "properties": {
+    "result_version": {"const": "0.9"},
+    "result_id": {"type": "string"},
+    "permit_id": {"type": "string"},
+    "permit_hash": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "request_digest": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "request_id": {"type": "string"},
+    "capability": {"type": "string"},
+    "action": {"type": "string"},
+    "resource": {"type": "string"},
+    "outcome": {"enum": ["SUCCEEDED", "FAILED"]},
+    "result": {"type": "object"},
+    "executed_at": {"type": "string"},
+    "authority_effect": {"const": "EVIDENCE_ONLY"}
+  },
+  "additionalProperties": false
+}
