@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Repo Maintainer Receipt",
+  "type": "object",
+  "required": ["receipt_version", "snapshot_id", "observed_repositories", "selected", "input_digest", "receipt_hash"],
+  "properties": {
+    "receipt_version": {"const": "0.5"},
+    "snapshot_id": {"type": "string"},
+    "observed_repositories": {"type": "integer", "minimum": 0},
+    "selected": {
+      "type": "array",
+      "maxItems": 3,
+      "items": {
+        "type": "object",
+        "required": ["full_name", "score", "task_type", "title", "rationale", "evidence", "requested_capability", "requested_action", "route"],
+        "properties": {
+          "full_name": {"type": "string"},
+          "score": {"type": "integer"},
+          "task_type": {"type": "string"},
+          "title": {"type": "string"},
+          "rationale": {"type": "string"},
+          "evidence": {"type": "array", "items": {"type": "string"}},
+          "requested_capability": {"const": "github.issue.create"},
+          "requested_action": {"const": "create_issue"},
+          "route": {"const": "REVIEW"}
+        },
+        "additionalProperties": false
+      }
+    },
+    "input_digest": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "receipt_hash": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+  },
+  "additionalProperties": false
+}
