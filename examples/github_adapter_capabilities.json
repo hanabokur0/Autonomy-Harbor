@@ -1,0 +1,32 @@
+{
+  "registry_id": "autonomy-harbor-github-reference",
+  "version": "1.1-reference",
+  "grants": [
+    {
+      "grant_id": "github-repo-read-auto",
+      "capability": "github.repo.read",
+      "effect": "ALLOW",
+      "actions": ["get_repo"],
+      "resources": ["hanabokur0/*"],
+      "issued_by": "human:reference-profile",
+      "note": "Read-only repository metadata example."
+    },
+    {
+      "grant_id": "github-issue-create-review",
+      "capability": "github.issue.create",
+      "effect": "REVIEW",
+      "actions": ["create_issue"],
+      "resources": ["hanabokur0/*"],
+      "issued_by": "human:reference-profile",
+      "note": "Issue creation requires explicit human review."
+    },
+    {
+      "grant_id": "github-dangerous-mutations-deny",
+      "capability": "github.*",
+      "effect": "DENY",
+      "actions": ["merge", "delete_repo", "change_permissions"],
+      "resources": ["*"],
+      "issued_by": "human:reference-profile"
+    }
+  ]
+}
