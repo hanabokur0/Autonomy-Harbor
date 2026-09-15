@@ -1,5 +1,16 @@
 # Changelog
 
+## v1.2.0 - MCP Inbound Adapter
+
+- Added an MCP v2 inbound adapter that converts model/tool calls into Harbor ActionRequest proposals.
+- MCP execution now uses the existing Appliance path: Planner -> Gate -> signed ExecutionPermit -> Executor -> Execution Adapter -> Verifier.
+- MCP has no review-lease issuance/cancellation, registry mutation, signer management, or provider credentials.
+- Removed model-supplied audit identity from the MCP tool surface; the operator controls identity with `PAR_MCP_ACTOR`.
+- REVIEW accepts only a separately issued signed review lease as data and remains independently verified/replay-protected by the Gate.
+- Added a finalized-receipt mirror that stores only independently verified receipts after Verifier success.
+- Added MCP documentation, integration notes, example registry, optional dependency/CLI entrypoint, and regression tests.
+- Preserved the v1.1 invariant `Adapter != Authority`; MCP tool availability does not create execution authority.
+
 ## v1.1.0 - Adapter Layer
 
 - Added the executor-side Adapter Layer with deterministic capability/action dispatch.
