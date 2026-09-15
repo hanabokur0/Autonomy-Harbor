@@ -659,6 +659,7 @@ def initialize_appliance(root: str | Path) -> Path:
                 "roles": ["executor_result_signer"],
                 "permit_replay_db": str(state_dir / "executor" / "permit_replay.sqlite3"),
                 "sandbox_root": str(sandbox_dir),
+                "adapters": [],
             },
             "verifier": {
                 "socket": str(run_dir / "verifier.sock"),
