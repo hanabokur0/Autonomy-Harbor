@@ -1,0 +1,10 @@
+{
+  "adapters": [
+    {
+      "type": "github",
+      "enabled": true,
+      "token_env": "AUTONOMY_HARBOR_GITHUB_TOKEN",
+      "api_base": "https://api.github.com"
+    }
+  ]
+}
