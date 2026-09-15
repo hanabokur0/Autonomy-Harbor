@@ -1,21 +1,11 @@
-# Autonomous Observer v1.0 — Autonomy Harbor
+# Personal Agent Runtime
 
-> **Observe freely. Act through authority. Return with evidence.**
+> **The agent may learn protocols. It may not grant itself authority.**
 
-**Autonomy Harbor** is a model-independent authority boundary for autonomous and semi-autonomous AI systems. The observer may reason, explore, propose, and learn candidates freely; authority remains outside the model and must cross a deterministic, auditable boundary before becoming action.
+`personal-agent-runtime` is a minimal execution boundary for autonomous or semi-autonomous AI agents.
+It treats models as replaceable planners and keeps authority, execution policy, and receipts outside the model.
 
-The Python package remains named `personal-agent-runtime` for continuity. The v1.0 product and repository name is **Autonomy Harbor**.
-
-Core principle:
-
-```text
-protocol knowledge != capability grant
-validated learning != authority
-PRSP PASS != capability grant
-valid signature != expanded scope
-```
-
-The v1.0 Appliance Profile runs planner, review signer, gate, executor, and verifier as distinct OS processes, with role-scoped keys and a Gate-signed one-shot `ExecutionPermit` required before the Executor will act.
+The project is designed as the execution trust boundary inside a wider LoPAS-derived ecosystem. v0.9 adds an **Appliance Profile**: planner, review signer, gate, executor, and verifier run as distinct OS processes, with role-scoped keys and a Gate-signed one-shot `ExecutionPermit` required before the Executor will act.
 
 See **`ARCHITECTURE.md`** for the end-to-end cognitive/execution loop and **`component_manifest.yaml`** for repository responsibilities, status, and authority boundaries.
 
@@ -111,6 +101,28 @@ receipt = runtime.run(
 assert receipt.gate == "ALLOW"
 assert receipt.outcome == "SUCCEEDED"
 ```
+
+
+## v1.2 MCP Inbound Adapter
+
+MCP clients can connect to Autonomy Harbor without becoming an authority source.
+The MCP surface is an inbound adapter: it proposes ActionRequests, while real
+execution still requires the existing Appliance path and a Gate-signed one-shot
+ExecutionPermit.
+
+```text
+MCP host -> Planner -> Gate -> ExecutionPermit -> Executor -> Adapter -> Verifier
+```
+
+Install the optional MCP dependency and start the stdio server:
+
+```bash
+pip install -e ".[mcp]"
+PAR_MCP_APPLIANCE_PROFILE=.par-appliance/config/appliance_profile.json par-mcp
+```
+
+MCP cannot issue review leases, mutate the registry, manage trust roots, or
+choose its own human-looking audit identity. See `docs/MCP.md`.
 
 
 ## v0.5 Repo Maintainer Agent
