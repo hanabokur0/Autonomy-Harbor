@@ -1,0 +1,11 @@
+{
+  "request_id": "github-issue-demo-001",
+  "capability": "github.issue.create",
+  "action": "create_issue",
+  "resource": "hanabokur0/Autonomy-Harbor",
+  "payload": {
+    "title": "Adapter layer review demo",
+    "body": "This request should remain REVIEW until a human approval is converted into a one-shot ExecutionPermit."
+  },
+  "actor": "repo-maintainer-agent"
+}
