@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "personal-agent-runtime"
-version = "1.1.0"
+version = "1.2.0"
 description = "A capability-gated execution runtime for personal AI agents"
 readme = "README.md"
 requires-python = ">=3.11"
@@ -12,8 +12,12 @@ license = {text = "MIT"}
 authors = [{name = "hanabokur0"}]
 dependencies = ["cryptography>=42.0.0"]
 
+[project.optional-dependencies]
+mcp = ["mcp>=2.0,<3"]
+
 [project.scripts]
 par-runtime = "personal_agent_runtime.cli:main"
+par-mcp = "personal_agent_runtime.mcp_server:main"
 
 [tool.setuptools]
 package-dir = {"" = "src"}
