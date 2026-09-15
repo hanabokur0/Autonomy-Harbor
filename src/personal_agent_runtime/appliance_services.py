@@ -22,7 +22,7 @@ from .appliance import (
     trust_store_from_list,
     verify_and_consume_execution_permit,
 )
-from .executor import SandboxedExecutor
+from .adapters import build_adapter_registry
 from .gate import CapabilityGate
 from .models import GateDecision
 from .receipt import create_receipt
@@ -156,11 +156,11 @@ def executor_handler(profile: Mapping[str, Any], config: Mapping[str, Any]):
     trust = trust_store_from_list(_load_json(config["trust_store"]))
     signer = load_signer(config["private_key"], subject=str(config["subject"]))
     ledger = ExecutionPermitLedger(config["permit_replay_db"])
-    executor = SandboxedExecutor(Path(config["sandbox_root"]))
+    executor = build_adapter_registry(sandbox_root=Path(config["sandbox_root"]), config=config)
 
     def handle(message: dict[str, Any]) -> dict[str, Any]:
         if message.get("op") == "health":
-            return {"role": "executor", "status": "ok", "key_id": signer.key_id}
+            return {"role": "executor", "status": "ok", "key_id": signer.key_id, "adapters": executor.manifest()}
         if message.get("op") != "execute":
             raise ValueError("executor_op_not_supported")
         if "execution_permit" not in message:
@@ -177,7 +177,8 @@ def executor_handler(profile: Mapping[str, Any], config: Mapping[str, Any]):
         if not authorization.authorized:
             return {"role": "executor", "executed": False, "reason": authorization.reason}
         try:
-            result = executor.execute(request)
+            dispatch = executor.execute(request)
+            result = dispatch.as_dict()
             outcome = "SUCCEEDED"
         except Exception as exc:
             result = {"error": type(exc).__name__, "reason": str(exc)}
