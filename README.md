@@ -1,6 +1,16 @@
-# Personal Agent Runtime
+# Autonomy Harbor
 
-> **The agent may learn protocols. It may not grant itself authority.**
+> **Observe freely. Act through authority. Return with evidence.**
+
+**Autonomy Harbor** is a model-independent authority boundary for autonomous and semi-autonomous AI agents.
+
+Agents may observe, reason, propose, and learn freely. Real-world execution remains behind explicit capability policy, human review where required, signed one-shot execution permits, and verifiable receipts.
+
+The Python package remains `personal-agent-runtime` for backward compatibility. `PersonalAgentRuntime` is the execution core inside Autonomy Harbor.
+
+**Intelligence != Authority.**
+**Protocol knowledge != capability grant.**
+**Adapter != Authority.**
 
 `personal-agent-runtime` is a minimal execution boundary for autonomous or semi-autonomous AI agents.
 It treats models as replaceable planners and keeps authority, execution policy, and receipts outside the model.
