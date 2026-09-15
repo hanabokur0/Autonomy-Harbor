@@ -1,5 +1,17 @@
 # Changelog
 
+## v1.1.0 - Adapter Layer
+
+- Added the executor-side Adapter Layer with deterministic capability/action dispatch.
+- Added the core invariant `Adapter != Authority`; adapter manifests always declare `authority_effect: NONE`.
+- Routed appliance execution through the adapter registry only after signed one-shot ExecutionPermit verification.
+- Added `SandboxAdapter` for existing local echo/read/write behavior.
+- Added the first external `GitHubAdapter` with `github.repo.read/get_repo` and `github.issue.create/create_issue`.
+- GitHub write credentials are resolved only inside the Executor process from an environment variable and are never placed in ActionRequests, permits, results, or receipts.
+- Unknown capabilities have no fallback adapter; duplicate bindings are rejected deterministically.
+- Added adapter manifest schema, adapter architecture documentation, GitHub integration documentation, examples, and regression tests.
+- Existing process isolation, review, permit replay protection, signing, and verifier behavior remain intact.
+
 ## v1.0.0 — Autonomy Harbor
 
 - Promotes the v0.1–v0.9 Personal Agent Runtime lineage into **Autonomous Observer v1.0 — Autonomy Harbor**.
