@@ -1,3 +1,14 @@
+from .adapters import (
+    AdapterBinding,
+    AdapterConflict,
+    AdapterDispatchResult,
+    AdapterError,
+    AdapterNotFound,
+    AdapterRegistry,
+    SandboxAdapter,
+    build_adapter_registry,
+)
+from .github_adapter import GitHubAdapter
 from .appliance import (
     APPLIANCE_VERSION,
     ExecutionPermitLedger,
@@ -74,6 +85,15 @@ from .verifiable import (
 )
 
 __all__ = [
+    "AdapterBinding",
+    "AdapterConflict",
+    "AdapterDispatchResult",
+    "AdapterError",
+    "AdapterNotFound",
+    "AdapterRegistry",
+    "SandboxAdapter",
+    "build_adapter_registry",
+    "GitHubAdapter",
     "APPLIANCE_VERSION",
     "ExecutionPermitLedger",
     "PermitAuthorization",
