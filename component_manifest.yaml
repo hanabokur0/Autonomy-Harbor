@@ -195,6 +195,23 @@ components:
       - "verifier_does_not_execute"
       - "root_or_administrator_compromise_is_outside_this_reference_boundary"
 
+  - id: adapter-layer
+    repo: local
+    class: core
+    layer: external_execution_translation
+    responsibility: "Translate already-authorized ActionRequests into provider-specific external operations without granting or expanding authority."
+    produces: [adapter_dispatch_result]
+    consumes: [authorized_action_request, execution_permit]
+    may_mutate_authority: false
+    runtime_position: executor_after_permit_verification
+    status: v1.1_reference
+    invariants:
+      - "adapter_availability_is_not_permission"
+      - "adapter_manifest_authority_effect_is_none"
+      - "adapter_dispatch_occurs_only_after_execution_permit_verification"
+      - "provider_credentials_do_not_enter_action_requests_or_receipts"
+      - "unknown_capability_has_no_fallback_adapter"
+
   - id: verifiable-capability-exchange
     repo: https://github.com/hanabokur0/Verifiable-Capability-Exchange
     class: core_candidate
