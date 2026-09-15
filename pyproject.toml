@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "personal-agent-runtime"
-version = "1.0.0"
+version = "1.1.0"
 description = "A capability-gated execution runtime for personal AI agents"
 readme = "README.md"
 requires-python = ">=3.11"
