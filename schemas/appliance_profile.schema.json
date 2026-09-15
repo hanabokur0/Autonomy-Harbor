@@ -55,6 +55,7 @@
         "permit_replay_db": {"type": "string"},
         "permit_ttl_seconds": {"type": "integer", "minimum": 1, "maximum": 300},
         "sandbox_root": {"type": "string"},
+        "adapters": {"type": "array", "items": {"type": "object"}},
         "chain_state": {"type": "string"}
       },
       "additionalProperties": true
