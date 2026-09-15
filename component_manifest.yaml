@@ -212,6 +212,25 @@ components:
       - "provider_credentials_do_not_enter_action_requests_or_receipts"
       - "unknown_capability_has_no_fallback_adapter"
 
+  - id: mcp-inbound-adapter
+    repo: local
+    class: optional
+    layer: external_request_ingress
+    responsibility: "Translate MCP tool calls into Harbor ActionRequest proposals without becoming an authority or alternate execution path."
+    produces: [action_request, mcp_tool_result]
+    consumes: [mcp_tool_call, appliance_profile, capability_registry]
+    may_mutate_authority: false
+    runtime_position: planner_ingress_before_gate
+    status: v1.2_reference
+    invariants:
+      - "mcp_tool_availability_is_not_permission"
+      - "mcp_cannot_issue_or_cancel_review_leases"
+      - "mcp_cannot_mutate_capability_registry_or_trust_store"
+      - "mcp_actor_is_operator_configured_not_model_supplied"
+      - "mcp_execution_requires_gate_signed_execution_permit"
+      - "mcp_has_no_direct_executor_bypass"
+      - "signed_review_lease_is_verified_by_gate_not_by_mcp"
+
   - id: verifiable-capability-exchange
     repo: https://github.com/hanabokur0/Verifiable-Capability-Exchange
     class: core_candidate
