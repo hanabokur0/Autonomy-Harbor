@@ -1,0 +1,51 @@
+{
+  "registry_id": "mcp-reference",
+  "version": "1.2-example",
+  "grants": [
+    {
+      "grant_id": "sandbox-read-auto",
+      "capability": "filesystem.read",
+      "effect": "ALLOW",
+      "actions": ["read_text"],
+      "resources": ["approved/*"],
+      "issued_by": "human:operator",
+      "note": "Read-only sandbox example."
+    },
+    {
+      "grant_id": "sandbox-write-review",
+      "capability": "filesystem.write",
+      "effect": "REVIEW",
+      "actions": ["write_text"],
+      "resources": ["approved/*"],
+      "issued_by": "human:operator",
+      "note": "Writing still requires separate signed human approval."
+    },
+    {
+      "grant_id": "github-read-auto",
+      "capability": "github.repo.read",
+      "effect": "ALLOW",
+      "actions": ["get_repo"],
+      "resources": ["hanabokur0/*"],
+      "issued_by": "human:operator",
+      "note": "Requires GitHubAdapter to be configured in the Executor."
+    },
+    {
+      "grant_id": "github-issue-review",
+      "capability": "github.issue.create",
+      "effect": "REVIEW",
+      "actions": ["create_issue"],
+      "resources": ["hanabokur0/*"],
+      "issued_by": "human:operator",
+      "note": "External mutation requires signed human review."
+    },
+    {
+      "grant_id": "control-plane-deny",
+      "capability": "runtime.*",
+      "effect": "DENY",
+      "actions": ["*"],
+      "resources": ["*"],
+      "issued_by": "human:operator",
+      "note": "Control-plane requests are never agent-addressable."
+    }
+  ]
+}
